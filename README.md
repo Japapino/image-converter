@@ -19,6 +19,7 @@ A command-line tool for bulk image conversion and resizing, built with Node.js a
 ## Installation
 
 1. Clone this repository or create a new directory:
+
 ```bash
 git clone <repository-url>
 # or
@@ -27,16 +28,19 @@ cd image-converter
 ```
 
 2. Initialize a new Node.js project:
+
 ```bash
 npm init -y
 ```
 
 3. Install the required dependencies:
+
 ```bash
 npm install sharp yargs chalk ora
 ```
 
 4. Make the script executable:
+
 ```bash
 chmod +x convert.js
 ```
@@ -51,23 +55,25 @@ chmod +x convert.js
 
 ### Command Options
 
-| Option | Alias | Description | Default | Required |
-|--------|-------|-------------|---------|----------|
-| --input | -i | Input directory containing images | - | Yes |
-| --output | -o | Output directory for converted images | - | Yes |
-| --format | -f | Output format (jpeg, png, webp) | jpeg | No |
-| --quality | -q | Output quality (1-100) | 80 | No |
-| --width | -w | Resize width (maintains aspect ratio) | - | No |
-| --help | - | Show help | - | No |
+| Option    | Alias | Description                           | Default | Required |
+| --------- | ----- | ------------------------------------- | ------- | -------- |
+| --input   | -i    | Input directory containing images     | -       | Yes      |
+| --output  | -o    | Output directory for converted images | -       | Yes      |
+| --format  | -f    | Output format (jpeg, png, webp)       | jpeg    | No       |
+| --quality | -q    | Output quality (1-100)                | 80      | No       |
+| --width   | -w    | Resize width (maintains aspect ratio) | -       | No       |
+| --help    | -     | Show help                             | -       | No       |
 
 ### Examples
 
 Convert all images in a directory to WebP:
+
 ```bash
 ./convert.js --input ./photos --output ./converted --format webp
 ```
 
 Convert and resize images to JPEG with custom quality:
+
 ```bash
 ./convert.js -i ./photos -o ./converted -f jpeg -q 90 -w 1200
 ```
@@ -75,11 +81,13 @@ Convert and resize images to JPEG with custom quality:
 ## Supported Formats
 
 ### Input Formats
+
 - JPEG/JPG
 - PNG
 - WebP
 
 ### Output Formats
+
 - JPEG
 - PNG
 - WebP
