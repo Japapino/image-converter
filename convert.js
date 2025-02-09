@@ -5,21 +5,19 @@ const ora = require('ora')
 const sharp = require('sharp')
 const yargs = require('yargs')
 
-const { hideBin } = require('yargs/helpers');
-
 // CLI config
 const argv = yargs
   .option('input', {
     alist: 'i',
     description: 'Inputdirectory containing images',
     type: 'string',
-    default: 'input-images'
+    default: 'input-images',
   })
   .option('output', {
     alias: 'o',
     description: 'Output directory for converted images',
     type: 'string',
-    default: 'converted-images'
+    default: 'converted-images',
   })
   .option('format', {
     alias: 'f',
@@ -37,17 +35,17 @@ const argv = yargs
     alias: 'w',
     description: 'Resize width (maintain aspect ratio)',
     type: 'number',
-    default: 800
+    default: 800,
   })
   .help()
   .argv
 
 async function convertImage(inputPath, outputPath, options) {
   try {
-    let pipeline = sharp(inputPath)
+    const image = sharp(inputPath)
 
     if (options.width) {
-      pipeline = pipeline.resize(options.width, null, {
+      sharp(inputPath).resize(options.width, null, {
         withoutEnlargement: true,
         fit: 'inside',
       })
@@ -55,22 +53,22 @@ async function convertImage(inputPath, outputPath, options) {
 
     switch (options.format.toLowerCase()) {
       case 'jpeg':
-        pipline = pipeline.jpeg({ quality: options.quality })
+        image.jpeg({ quality: options.quality })
         break
       case 'png':
-        pipline = pipeline.png({ quality: options.quality })
+        image.png({ quality: options.quality })
         break
       case 'webp':
-        pipline = pipeline.webp({ quality: options.quality })
+        image.webp({ quality: options.quality })
         break
       case 'pdf':
-        pipline = pipeline.pdf({ quality: options.quality })
+        image.pdf({ quality: options.quality })
         break
       default:
         throw new Error(`Unsupported format: ${options.format}`)
     }
 
-    await pipeline.toFile(outputPath)
+    await image.toFile(outputPath)
     return true
   }
   catch (error) {
@@ -90,13 +88,11 @@ async function processDirectory() {
     // create output directory if it doesnt exist already
     await fs.mkdir(argv.output, { revursive: true })
 
-    // read all files and get images
     const files = await fs.readdir(argv.input)
     const imageFiles = files.filter(file =>
       /\.(jpg|jpeg|png|webp)$/i.test(file),
     )
 
-    // if no images found, exit
     if (imageFiles.length === 0) {
       spinner.fail('No image files found in input directory')
       return

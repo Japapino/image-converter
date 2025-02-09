@@ -6,7 +6,7 @@ A command-line tool for bulk image conversion and resizing, built with Node.js a
 
 - Convert between multiple image formats (JPEG, PNG, WebP)
 - Batch process entire directories of images
-- Resize images while maintaining aspect ratio 
+- Resize images while maintaining aspect ratio
 - Adjustable quality settings
 - Progress indicator with detailed success/failure reporting
 - Preserve original filenames with new extensions
@@ -45,7 +45,8 @@ npm install sharp yargs chalk ora
 ```bash
 chmod +x convert.js
 ```
-    or run with default values using node: 
+
+    or run with default values using node:
 
 ```bash
 npm run convert
@@ -100,11 +101,10 @@ Convert and resize images to JPEG with custom quality:
 
 ## Error Handling
 
-- The tool will create the output directory 
+- The tool will create the output directory
 - Failed conversions are reported but don't stop the batch process
 - Detailed error messages for debugging
 - Final summary shows successful and failed conversions
-
 
 ## License
 
