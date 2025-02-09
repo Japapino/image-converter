@@ -6,10 +6,11 @@ A command-line tool for bulk image conversion and resizing, built with Node.js a
 
 - Convert between multiple image formats (JPEG, PNG, WebP)
 - Batch process entire directories of images
-- Resize images while maintaining aspect ratio
+- Resize images while maintaining aspect ratio 
 - Adjustable quality settings
 - Progress indicator with detailed success/failure reporting
 - Preserve original filenames with new extensions
+- PDF conversion (Coming Soon)
 
 ## Prerequisites
 
@@ -21,7 +22,7 @@ A command-line tool for bulk image conversion and resizing, built with Node.js a
 1. Clone this repository or create a new directory:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Japapino/image-converter.git
 # or
 mkdir image-converter
 cd image-converter
@@ -44,6 +45,11 @@ npm install sharp yargs chalk ora
 ```bash
 chmod +x convert.js
 ```
+    or run with default values using node: 
+
+```bash
+npm run convert
+```
 
 ## Usage
 
@@ -55,14 +61,14 @@ chmod +x convert.js
 
 ### Command Options
 
-| Option    | Alias | Description                           | Default | Required |
-| --------- | ----- | ------------------------------------- | ------- | -------- |
-| --input   | -i    | Input directory containing images     | -       | Yes      |
-| --output  | -o    | Output directory for converted images | -       | Yes      |
-| --format  | -f    | Output format (jpeg, png, webp)       | jpeg    | No       |
-| --quality | -q    | Output quality (1-100)                | 80      | No       |
-| --width   | -w    | Resize width (maintains aspect ratio) | -       | No       |
-| --help    | -     | Show help                             | -       | No       |
+| Option    | Alias | Description                           | Default          | Required |
+| --------- | ----- | ------------------------------------- | ---------------- | -------- |
+| --input   | -i    | Input directory containing images     | input-images     | No       |
+| --output  | -o    | Output directory for converted images | converted-images | No       |
+| --format  | -f    | Output format (jpeg, png, webp)       | webp             | No       |
+| --quality | -q    | Output quality (1-100)                | 80               | No       |
+| --width   | -w    | Resize width (maintains aspect ratio) | 800              | No       |
+| --help    | -     | Show help                             | -                | No       |
 
 ### Examples
 
@@ -94,18 +100,11 @@ Convert and resize images to JPEG with custom quality:
 
 ## Error Handling
 
-- The tool will create the output directory if it doesn't exist
+- The tool will create the output directory 
 - Failed conversions are reported but don't stop the batch process
 - Detailed error messages for debugging
 - Final summary shows successful and failed conversions
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
 
 ## License
 
@@ -120,7 +119,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Author
 
-[Your Name]
+Stefan Murakami
 
 ## Version
 

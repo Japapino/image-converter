@@ -13,19 +13,19 @@ const argv = yargs
     alist: 'i',
     description: 'Inputdirectory containing images',
     type: 'string',
-    demandOption: true,
+    default: 'input-images'
   })
   .option('output', {
     alias: 'o',
     description: 'Output directory for converted images',
     type: 'string',
-    demandOption: true,
+    default: 'converted-images'
   })
   .option('format', {
     alias: 'f',
     description: 'Output format (jpeg, png, webp)',
     type: 'string',
-    default: 'jpeg',
+    default: 'webp',
   })
   .option('quality', {
     alias: 'q',
@@ -37,6 +37,7 @@ const argv = yargs
     alias: 'w',
     description: 'Resize width (maintain aspect ratio)',
     type: 'number',
+    default: 800
   })
   .help()
   .argv
