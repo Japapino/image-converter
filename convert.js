@@ -5,6 +5,8 @@ const ora = require('ora')
 const sharp = require('sharp')
 const yargs = require('yargs')
 
+const { hideBin } = require('yargs/helpers');
+
 // CLI config
 const argv = yargs
   .option('input', {
@@ -57,8 +59,11 @@ async function convertImage(inputPath, outputPath, options) {
       case 'png':
         pipline = pipeline.png({ quality: options.quality })
         break
-      case 'web':
+      case 'webp':
         pipline = pipeline.webp({ quality: options.quality })
+        break
+      case 'pdf':
+        pipline = pipeline.pdf({ quality: options.quality })
         break
       default:
         throw new Error(`Unsupported format: ${options.format}`)
@@ -80,6 +85,7 @@ async function processDirectory() {
   const spinner = ora('Starting conversion...').start()
 
   try {
+    // TODO: fix this, errors if folder exists
     // create output directory if it doesnt exist already
     await fs.mkdir(argv.output, { revursive: true })
 
@@ -120,8 +126,8 @@ async function processDirectory() {
       if (successful > 0) {
         spinner.succeed(
           chalk.green(
-            `Conversion complete! Successfully converted ${successful} images.${
-              failed > 0 ? ` Failed: ${failed}` : ''}`,
+            `Conversion complete! Successfully converted ${successful} images.${failed > 0 ? ` Failed: ${failed}` : ''
+            }`,
           ),
         )
       }
