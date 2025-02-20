@@ -57,32 +57,32 @@ npm run convert
 ### Basic Command Structure
 
 ```bash
-./convert.js --input <input-directory> --output <output-directory> [options]
+node convert.js --input <input-directory> --output <output-directory> [options]
 ```
 
 ### Command Options
 
-| Option    | Alias | Description                           | Default          | Required |
-| --------- | ----- | ------------------------------------- | ---------------- | -------- |
-| --input   | -i    | Input directory containing images     | input-images     | No       |
-| --output  | -o    | Output directory for converted images | converted-images | No       |
-| --format  | -f    | Output format (jpeg, png, webp)       | webp             | No       |
-| --quality | -q    | Output quality (1-100)                | 80               | No       |
-| --width   | -w    | Resize width (maintains aspect ratio) | 800              | No       |
-| --help    | -     | Show help                             | -                | No       |
+| Option    | Alias | Description                           | Default       | Required |
+| --------- | ----- | ------------------------------------- | ------------- | -------- |
+| --input   | -i    | Input directory containing images     | input-images  | No       |
+| --output  | -o    | Output directory for converted images | output-images | No       |
+| --format  | -f    | Output format (jpeg, png, webp)       | webp          | No       |
+| --quality | -q    | Output quality (1-100)                | 80            | No       |
+| --width   | -w    | Resize width (maintains aspect ratio) | 800           | No       |
+| --help    | -     | Show help                             | -             | No       |
 
 ### Examples
 
 Convert all images in a directory to WebP:
 
 ```bash
-./convert.js --input ./photos --output ./converted --format webp
+node convert.js --input ./photos --output ./converted --format webp
 ```
 
 Convert and resize images to JPEG with custom quality:
 
 ```bash
-./convert.js -i ./photos -o ./converted -f jpeg -q 90 -w 1200
+node convert.js -i ./photos -o ./converted -f jpeg -q 90 -w 1200
 ```
 
 ## Supported Formats

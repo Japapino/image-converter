@@ -17,7 +17,7 @@ const argv = yargs
     alias: 'o',
     description: 'Output directory for converted images',
     type: 'string',
-    default: 'converted-images',
+    default: 'output-images',
   })
   .option('format', {
     alias: 'f',
